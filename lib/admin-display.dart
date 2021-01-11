@@ -34,6 +34,14 @@ class _AdminDisplay extends State<AdminDisplay> {
     });
   }
 
+  void _deleteItem(BuildContext context, Item item, int position) async {
+    await itemsReference.child(item.id).remove().then((_) {
+      setState(() {
+        items.removeAt(position);
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -44,21 +52,39 @@ class _AdminDisplay extends State<AdminDisplay> {
             return Column(
               children: <Widget>[
                 Divider(height: 5.0),
-                ListTile(
-                  title: Text(
-                    '${items[position].name}',
-                    style: TextStyle(
-                      fontSize: 22.0,
-                      color: Colors.deepOrangeAccent,
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(items[position].name),
+                          Text(items[position].price)
+                        ],
+                      ),
                     ),
-                  ),
-                  subtitle: Text(
-                    '${items[position].price}',
-                    style: new TextStyle(
-                      fontSize: 18.0,
-                      fontStyle: FontStyle.italic,
+                    Expanded(
+                      flex: 2,
+                      child: Row(
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.edit, color: Colors.green),
+                            onPressed: () {},
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.delete, color: Colors.red),
+                            onPressed: () {
+                              _deleteItem(context, items[position], position);
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             );
