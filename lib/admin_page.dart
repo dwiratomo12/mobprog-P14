@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'admin-display.dart';
 import 'admin-home.dart';
@@ -12,6 +14,7 @@ class AdminPage extends StatefulWidget {
 
 class _AdminPage extends State<AdminPage> {
   Widget mainWidget;
+  FirebaseAuth _auth = FirebaseAuth.instance;
 
   void initState() {
     this._initial();
@@ -26,11 +29,15 @@ class _AdminPage extends State<AdminPage> {
     mainWidget = AdminHome();
   }
 
+  _signOut() {
+    _auth.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Welcome to My Application'),
+          title: Text('Welcome to TODO List App'),
           backgroundColor: Colors.lightBlueAccent),
       body: Container(
         padding: EdgeInsets.all(20.0),
@@ -42,9 +49,12 @@ class _AdminPage extends State<AdminPage> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Main Menu'),
+              child: Text(
+                'Main Menu',
+                style: TextStyle(color: Colors.white),
+              ),
               decoration: BoxDecoration(
-                color: Colors.lightBlueAccent,
+                color: Color(0XFF2C814E),
               ),
             ),
             ListTile(
@@ -81,8 +91,11 @@ class _AdminPage extends State<AdminPage> {
               leading: Icon(Icons.settings),
               title: Text('Logout'),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                SystemNavigator.pop();
+                // setState(() {
+                //   mainWidget = _signOut();
+                // });
+                // Navigator.pop(context);
               },
             ),
           ],

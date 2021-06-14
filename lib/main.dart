@@ -52,14 +52,14 @@ class _SplashScreen extends State<SplashScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CircleAvatar(
-                        backgroundImage: AssetImage("images/images2.jpg"),
+                        backgroundImage: AssetImage("images/logo_app.png"),
                         radius: 60,
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 10.0),
                       ),
                       Text(
-                        "My Application System",
+                        "Welcome to TODO List App",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -79,7 +79,7 @@ class _SplashScreen extends State<SplashScreen> {
                     Padding(
                       padding: EdgeInsets.only(top: 20),
                       child: Text(
-                        'Welcome to My Application',
+                        'Welcome to TODO List App',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,

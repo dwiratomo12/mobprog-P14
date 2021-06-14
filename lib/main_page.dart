@@ -46,7 +46,7 @@ class _MainPage extends State<MainPage> {
         ),
         Center(
           child: CircleAvatar(
-            backgroundImage: AssetImage("images/images2.jpg"),
+            backgroundImage: AssetImage("images/logo_app.png"),
             radius: 60,
           ),
         ),
@@ -68,6 +68,7 @@ class _MainPage extends State<MainPage> {
               borderRadius: BorderRadius.circular(15.0),
               borderSide: BorderSide(color: Colors.lightBlueAccent),
             )),
+        // ignore: missing_return
         validator: (value) {
           if (value.isEmpty) {
             return 'Enter email';
@@ -93,6 +94,7 @@ class _MainPage extends State<MainPage> {
               borderRadius: BorderRadius.circular(15.0),
               borderSide: BorderSide(color: Colors.lightBlueAccent),
             )),
+        // ignore: missing_return
         validator: (value) {
           if (value.isEmpty) {
             return 'Enter password';
@@ -112,11 +114,13 @@ class _MainPage extends State<MainPage> {
           height: 1.4 * (MediaQuery.of(context).size.height / 20),
           width: 5 * (MediaQuery.of(context).size.width / 10),
           margin: EdgeInsets.only(bottom: 20),
-          child: RaisedButton(
-            elevation: 5.0,
-            color: Colors.lightBlueAccent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              elevation: 5.0,
+              primary: Colors.lightBlueAccent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
             ),
             onPressed: () {
               if (_formKey.currentState.validate()) {
@@ -143,8 +147,8 @@ class _MainPage extends State<MainPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          height: 20,
-          child: FlatButton(
+          height: 70,
+          child: TextButton(
             onPressed: () {
               Navigator.push(
                   context,
@@ -209,8 +213,8 @@ class _MainPage extends State<MainPage> {
   Widget build(BuildContext conotext) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
-        resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomInset: false,
+        // resizeToAvoidBottomInset: true,
         backgroundColor: Colors.blue,
         body: SingleChildScrollView(
           child: Stack(
@@ -240,7 +244,7 @@ class _MainPage extends State<MainPage> {
                   SizedBox(
                     height: 10.0,
                   ),
-                  Text('Welcome to My System',
+                  Text('Welcome to TODO List App',
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                   SizedBox(
